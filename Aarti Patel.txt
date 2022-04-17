@@ -1,0 +1,52 @@
+from tkinter import *
+class LoanCalculator():
+
+	def init(self):
+    
+		window = TK()
+    		window.title("Loan Calculator")
+     		window.geometry("250x300")
+      	window.config(background="Beige")
+    		Lable(window, text = "Annual Intrest Rate", bg = "Beige",borderwidth = 4).grid(row = 1, column = 1, sticky = w)
+    		Lable(window, text = "Number of Years", bg = "Beige",borderwidth = 4).grid(row = 2, column = 1, sticky = w)
+    		Lable(window, text = "Loan Amount", bg = "Beige",borderwidth = 4).grid(row =3, column = 1, sticky = w)
+    		Lable(window, text = "Monthly Payment", bg = "Beige",borderwidth = 4).grid(row = 4, column = 1, sticky = w)
+    		Lable(window, text = "Total Payment", bg = "Beige",borderwidth = 4).grid(row = 5, column = 1, sticky = w)
+    
+    		# for taking input
+    		self.annualInterestRateVar = StringVar()
+    		Entry(window, textvariable = self.annualInterestRateVar, justify = RIGHT).grid(row = 1, column = 2)
+    		self.numberOfYearsVar = StringVar()
+        
+    		Entry(window, textvariable = self.numberOfYearsVar, justify = RIGHT).grid(row = 2, column = 2)
+    		self.loanAmountVar = StringVar()
+        
+    		Entry(window, textvariable = self.loanAmountVar, justify = RIGHT).grid(row = 3, column = 2)
+    		self.monthlyPaymentVar = StringVar()
+   		lblMonthlyPaymnet = Label(window, textvariable = self.monthlyPaymentVar).grid(row = 4, column = 2, sticky = E)
+    
+     		self.totalPaymentVar = StringVar()
+    		lblTotalPaymentVar = Label(window, textvariable = self.totalPaymentVa).grid(row = 5, column = 2, sticky = E)
+    
+   		# create the button
+    		btcomputePayment = Button(window, text = "compute payment", command = self.computePayment).grid(row = 6, column = 2, sticky = E)
+    
+    		#an event loop
+    		window.mainloop()
+    
+    		#total payment
+	def computepayment(self):
+		monthlypayment = self.getmonthlyPayment(float(self.loanAmountVar.get()), float(self.annualInterestRateVar.get()) / 1200, int(self.numberOfYearsVar.get()))
+        
+   		self.monthlyPaymentVar.set(format(monthlyPayment, '10.2f'))
+    		totalPayment = float(self.monthlyPaymentVar.get()) * 12  * int(self.numberOfYearsVar.get())
+    		self.totalPaymentVar.set(format(totalPayment, '10.2f'))
+    
+    		# compute monthly payment.
+	def getMonthlyPayment(self, loanAmount, monthlyInterestRate, numberOfYears):
+		monthlyPayment = loanAmount * monthlyInterestRate / (1- 1 / (1 + monthlyInterestRate) ** (numberOfYears * 12))
+    		return (monthlyPayment)
+      	window = TK()
+        
+LoanCalculator()
+    
