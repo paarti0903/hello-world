@@ -1,0 +1,118 @@
+
+import tkinter as tk
+from tkinter import ttk
+from tkinter import * 
+class LoanCalculator:
+
+# this is a function to get the user input from the text input box
+def getInputBoxValue():
+    self.txtone = StringVar()
+	userInput = txtone.get()
+	return userInput
+
+
+# this is a function to get the user input from the text input box
+def getInputBoxValue():
+    self.txttwo = StringVar()
+	userInput = txttwo.get()
+	return userInput
+
+
+# this is a function to get the user input from the text input box
+def getInputBoxValue():
+    self.txtthree = StringVar()
+	userInput = txtthree.get()
+	return userInput
+    
+    self.monthlyPaymentVar = StringVar()
+    lblMonthlyPayment = Label(window, textvariable =
+                self.monthlyPaymentVar).grid(row = 4,
+                column = 2, sticky = E)
+
+
+# this is the function called when the button is clicked
+def btnClickFunction():
+	print('clicked')
+
+
+# this is the function called when the button is clicked
+def btnClickFunction():
+	print('clicked')
+
+
+
+root = Tk()
+
+# This is the section of code which creates the main window
+root.geometry('541x339')
+root.configure(background='#C1CDCD')
+root.title('Loan Calculator')
+
+
+# This is the section of code which creates the a label
+Label(root, text='Annual Interest Rate', bg='#C1CDCD', font=('arial', 12, 'normal')).place(x=59, y=51)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Number of Years', bg='#C1CDCD', font=('arial', 12, 'normal')).place(x=60, y=88)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Loan Amount', bg='#C1CDCD', font=('arial', 12, 'normal')).place(x=60, y=125)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Monthly Payment', bg='#C1CDCD', font=('arial', 12, 'normal')).place(x=59, y=163)
+
+
+# This is the section of code which creates the a label
+Label(root, text='Total Payment', bg='#C1CDCD', font=('arial', 12, 'normal')).place(x=60, y=200)
+
+
+# This is the section of code which creates a text input box
+txtone=Entry(root)
+txtone.place(x=300, y=51)
+
+
+# This is the section of code which creates a text input box
+txttwo=Entry(root)
+txttwo.place(x=300, y=87)
+
+
+# This is the section of code which creates a text input box
+txtthree=Entry(root)
+txtthree.place(x=302, y=122)
+
+#Define a function to clear the Entry Widget Content
+def clear_text():
+    text.delete(0, END)
+    
+   
+# This is the section of code which creates a button
+Button(root, text='Clear', bg='#838B8B', font=('arial', 12, 'normal'), command=clear_text).place(x=141, y=249)
+
+
+# This is the section of code which creates a button
+Button(root, text='Calculate', bg='#838B8B', font=('arial', 12, 'normal'), command=btnClickFunction).place(x=273, y=248)
+
+# calculate the total payment.
+def ComputePayment(self):
+   
+    monthlyPayment = self.getMonthlyPayment(float(self.txtthree.get()),
+                    float(self.txtone.get()) / 1200,
+                    int(self.txttwo.get()))
+ 
+    self.monthlyPaymentVar.set(format(monthlyPayment, '10.2f'))
+    totalPayment = float(self.monthlyPaymentVar.get()) * 12 \
+                           * int(self.txttwo.get())
+    self.totalPaymentVar.set(format(totalPayment, '10.2f'))
+ 
+# compute the monthly payment.
+def getMonthlyPayment(self, loanAmount, monthlyInterestRate, numberOfYears):
+    monthlyPayment = loanAmount * monthlyInterestRate /
+                    (1- 1 / (1 + monthlyInterestRate) **
+                    (numberOfYears * 12))
+ 
+    return monthlyPayment;
+    
+root.mainloop()
